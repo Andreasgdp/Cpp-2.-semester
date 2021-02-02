@@ -1,0 +1,1 @@
+g++ -o "/home/andreas/projects/Numbers/bin/x64/Debug/Numbers.out" -Wl,--no-undefined -Wl,-z,relro -Wl,-z,now -Wl,-z,noexecstack /home/andreas/projects/Numbers/obj/x64/Debug/ClothingCalc.o /home/andreas/projects/Numbers/obj/x64/Debug/main.o
