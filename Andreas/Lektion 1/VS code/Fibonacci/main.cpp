@@ -15,7 +15,7 @@ int main()
 		last2 = counter;
 		counter = last1 + last2;
 
-	} while (true);
+	} while (counter < 300);
 	cout << counter << endl;
 	return 0;
 }

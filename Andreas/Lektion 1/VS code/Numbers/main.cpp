@@ -1,6 +1,7 @@
 #include <iostream>
 #include "ClothingCalc.h"
 #include <string>
+#include <iostream>
 
 using namespace std;
 
@@ -19,13 +20,13 @@ int main()
         double weight;
         unsigned int age;
 
-        cout << "Choose your height:" << endl;
+        cout << "Choose your height: ";
         cin >> height;
         cloth.setHeight(height);
-        cout << "Choose your weight:" << endl;
+        cout << "Choose your weight: ";
         cin >> weight;
         cloth.setWeight(weight);
-        cout << "Choose your age:" << endl;
+        cout << "Choose your age: ";
         cin >> age;
         cloth.setAge(age);
 

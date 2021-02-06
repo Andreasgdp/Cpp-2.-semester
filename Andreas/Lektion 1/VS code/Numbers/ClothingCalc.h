@@ -16,6 +16,7 @@ public:
 	double calcHat() const;
 	double calcJacket() const;
 	double calcWaist() const;
+	double calcLeg() const;
 
 private:
 	double mHeight, mWeight;
