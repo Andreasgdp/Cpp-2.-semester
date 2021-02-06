@@ -1,1 +1,0 @@
-g++ -o "/home/andreas/projects/Another Dangling-else Problem/bin/x64/Debug/Another Dangling-else Problem.out" -Wl,--no-undefined -Wl,-z,relro -Wl,-z,now -Wl,-z,noexecstack "/home/andreas/projects/Another Dangling-else Problem/obj/x64/Debug/main.o"

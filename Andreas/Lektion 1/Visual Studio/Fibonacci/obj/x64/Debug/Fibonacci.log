@@ -1,0 +1,9 @@
+﻿  Validating sources
+  Copying sources remotely to '192.168.20.242'
+  Validating architecture
+  Validating architecture
+  Starting remote build
+  Compiling sources:
+  main.cpp
+  Linking objects
+  Fibonacci.vcxproj -> C:\Users\andre\Documents\GitHub\Cpp-2.-semester\Andreas\Lektion 1\Fibonacci\bin\x64\Debug\Fibonacci.out
