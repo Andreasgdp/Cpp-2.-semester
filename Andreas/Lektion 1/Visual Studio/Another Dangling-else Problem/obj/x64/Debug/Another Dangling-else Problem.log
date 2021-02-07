@@ -1,9 +1,0 @@
-﻿  Validating sources
-  Copying sources remotely to '192.168.20.242'
-  Validating architecture
-  Validating architecture
-  Starting remote build
-  Compiling sources:
-  main.cpp
-  Linking objects
-  Another Dangling-else Problem.vcxproj -> C:\Users\andre\Documents\GitHub\Cpp-2.-semester\Andreas\Lektion 1\Another Dangling-else Problem\bin\x64\Debug\Another Dangling-else Problem.out
