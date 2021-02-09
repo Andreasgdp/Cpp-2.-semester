@@ -42,19 +42,12 @@ double ClothingCalc::calcWaist() const
 	return mWeight / 2.6 + 1 / 10 * ClothingCalc::yearsOverX(28, 2);
 }
 
+unsigned int ClothingCalc::yearsOverX(unsigned int x, unsigned int fullYears) const
+{
+	return (mAge > x) ? (mAge - x) % fullYears : 0;
+}
+
 double ClothingCalc::calcLeg() const
 {
 	return 0.0;
-}
-
-unsigned int ClothingCalc::yearsOverX(unsigned int x, unsigned int fullYears) const
-{
-	if (mAge > x)
-	{
-		return (mAge - x) % fullYears;
-	}
-	else
-	{
-		return 0;
-	}
 }
