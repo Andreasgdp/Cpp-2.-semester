@@ -10,8 +10,6 @@ int main(int argc, char const *argv[])
 
 	const int n = 10000;
 	int numDice = 5;
-	// cout << "How many times do you want to simulate dice throw (up to 10000)?: ";
-	// cin >> n;
 
 	double sum = 0;
 
@@ -30,7 +28,8 @@ int main(int argc, char const *argv[])
 			rolls[i] += roll;
 		}
 	}
-	cout << "Gennemsnittet af alle omgange er: " << sum / n / static_cast<double>(numDice) << endl;
+	cout << "Gennemsnittet af alle omgange af " << n << " omgange totalt er: " << sum / n / static_cast<double>(numDice)
+		 << ". Herunder er et histogram over de forskellige udkom:" << endl;
 
 	for (size_t i = 0; i < rolls.size(); i++)
 	{
