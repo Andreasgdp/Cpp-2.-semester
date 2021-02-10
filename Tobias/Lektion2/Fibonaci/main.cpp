@@ -6,8 +6,8 @@ int main()
 {
     bool run = true;
     int weight, days;
-    int F1,F2;
-    int final;
+    double F1,F2;
+    double final;
 
     while (run) {
         cout << "Please input weight and amount of days: ";
@@ -23,5 +23,9 @@ int main()
             F1 = final;
         }
         cout << "The green crud will weigh " << final << " pounds after " << days << " days" << endl;
+
+        cout << "Do you want to continue? 1 for yes 0 for no: ";
+        cin >> run;
+
     }
 }
