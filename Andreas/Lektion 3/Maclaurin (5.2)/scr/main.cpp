@@ -5,7 +5,7 @@ using namespace std;
 
 int main(int argc, char const *argv[])
 {
-	Maclaurin m(2, 20);
+	Maclaurin m(13, 100);
 
 	cout << m.calcAproxOfEx();
 	return 0;

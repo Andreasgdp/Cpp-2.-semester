@@ -11,10 +11,10 @@ public:
 	Maclaurin();
 	Maclaurin(int x, int order);
 
-	unsigned long long calcFactorial(int order);
+	long double calcFactorial(int order);
 
-	unsigned long long calcAproxOfEx();
-	unsigned long long calcAproxOfEx(int x, int order);
+	long double calcAproxOfEx();
+	long double calcAproxOfEx(int x, int order);
 };
 
 #endif // !MACLAURIN_h

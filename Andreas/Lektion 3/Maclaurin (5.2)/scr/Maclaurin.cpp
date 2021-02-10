@@ -12,9 +12,9 @@ Maclaurin::Maclaurin(int x, int order)
 	mOrder = order;
 }
 
-unsigned long long Maclaurin::calcAproxOfEx()
+long double Maclaurin::calcAproxOfEx()
 {
-	unsigned long long ex = 0;
+	long double ex = 1;
 	for (int i = 1; i < mOrder; ++i)
 	{
 		ex += (1 / (calcFactorial(i))) * pow(mX, i);
@@ -23,21 +23,20 @@ unsigned long long Maclaurin::calcAproxOfEx()
 	return ex;
 }
 
-unsigned long long Maclaurin::calcFactorial(int order)
+long double Maclaurin::calcFactorial(int order)
 {
-	unsigned long long factorial = 1;
+	long double factorial = 1;
 
 	for (int i = 1; i <= order; ++i)
 	{
 		factorial *= i;
 	}
-	std::cout << factorial << std::endl;
 	return factorial;
 }
 
-unsigned long long Maclaurin::calcAproxOfEx(int x, int order)
+long double Maclaurin::calcAproxOfEx(int x, int order)
 {
-	unsigned long long ex = 0;
+	long double ex = 1;
 	for (int i = 1; i < order; ++i)
 	{
 		ex += (1 / (calcFactorial(i))) * pow(x, i);
