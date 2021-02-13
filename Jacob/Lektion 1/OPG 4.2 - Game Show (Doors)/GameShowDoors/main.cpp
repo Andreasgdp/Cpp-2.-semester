@@ -11,7 +11,6 @@ int main()
 
     srand(time(NULL));
 
-    int userPickedDoor;
     std::string keepDoor;
     std::cout << "Keep door?(y/n): ";
     std::cin >> keepDoor;
