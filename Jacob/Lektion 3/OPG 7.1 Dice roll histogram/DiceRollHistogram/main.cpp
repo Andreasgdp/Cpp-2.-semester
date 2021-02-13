@@ -42,14 +42,18 @@ int main()
         cout << setw(3) << right << i;
         for(int j = 1; j <= 30; j++)
             if (histogram[j] < i) {
-                cout << '.';
+                cout << setw(3) << '.';
             } else {
-                cout << '*';
-            }
+                cout << setw(3) << '*';
+        }
         cout << endl;
     }
+    cout << "     ";
+    for(int j = 1; j <= 30; j++) {
+        cout << setw(3) << left << j;
+    }
 
-    cout << endl;
+    cout << endl << endl;
     for (int i = 1; i <= 30; i++) {
         cout << i << ": " << histogram[i] << endl;
     }
