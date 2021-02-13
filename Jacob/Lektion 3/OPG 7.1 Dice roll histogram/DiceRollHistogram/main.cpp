@@ -44,7 +44,7 @@ int main()
             if (histogram[j] < i) {
                 cout << setw(3) << '.';
             } else {
-                cout << setw(3) << '*';
+                cout << setw(3) << '|';
         }
         cout << endl;
     }
