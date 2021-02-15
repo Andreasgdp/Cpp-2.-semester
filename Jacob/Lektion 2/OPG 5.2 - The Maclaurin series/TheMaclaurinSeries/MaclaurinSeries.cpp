@@ -1,6 +1,5 @@
 #include "MaclaurinSeries.h"
-#include <math.h>
-#include <iostream>
+#include <cmath>
 
 MaclaurinSeries::MaclaurinSeries() {
 
@@ -11,19 +10,18 @@ MaclaurinSeries::MaclaurinSeries(int x, int n) {
     mN = n;
 }
 
-long long MaclaurinSeries::calcFactorial(int order) {
-    unsigned long long factorial = 1;
+long double MaclaurinSeries::calcFactorial(int order) {
+    long double factorial = 1;
     for(int i = 1; i <= order; ++i) {
             factorial *= i;
         }
-    std::cout << factorial << std::endl;
     return factorial;
 }
 
-long long MaclaurinSeries::calcAproxOfEx() {
-    long long ex = 0;
+long double MaclaurinSeries::calcAproxOfEx() {
+    long double ex = 1;
     for(int i = 1; i <= mN; ++i) {
-        ex += (1 / calcFactorial(i) * pow(mX, i));
+        ex += (1 / (calcFactorial(i))) * pow(mX, i);
     }
     return ex;
 }

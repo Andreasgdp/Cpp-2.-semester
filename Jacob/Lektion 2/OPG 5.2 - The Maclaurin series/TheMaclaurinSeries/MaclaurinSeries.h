@@ -7,8 +7,8 @@ public:
     MaclaurinSeries();
     MaclaurinSeries(int x, int n);
 
-    long long calcFactorial(int order);
-    long long calcAproxOfEx();
+    long double calcFactorial(int order);
+    long double calcAproxOfEx();
 
 private:
     int mX, mN;
