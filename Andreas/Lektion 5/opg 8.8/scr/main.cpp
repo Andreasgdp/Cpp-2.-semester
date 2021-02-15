@@ -57,9 +57,9 @@ int main(int argc, char const *argv[])
 	cout << *(vPtr + 4) << endl;
 	cout << vPtr[4] << endl;
 
-	// i) What address is referenced by vPtr + 3? What value is stored at that location?
-	// !Answear:
-	// The address referenced by vPtr + 3 is the variable arr[3] and the value stored at that location is 8.
+	// ? i) What address is referenced by vPtr + 3? What value is stored at that location?
+	// ! Answear:
+	// * The address referenced by vPtr + 3 is the variable arr[3] and the value stored at that location is 8.
 
 	return 0;
 }
