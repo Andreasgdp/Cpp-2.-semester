@@ -18,7 +18,6 @@ std::tuple<double, double, bool> QuadraticEquation::solve() const {
     // Negative determinant, imaginary
     if (double d = pow(mB, 2) - 4 * mA * mC < 0) {
         std::complex<double> imag(-mB / (2 * mA), sqrt(abs(pow(mB, 2) - 4 * mA * mC)) / (2 * mA));
-
         return {std::real(imag), std::imag(imag), true};
 
     } else {    // Positive determinant

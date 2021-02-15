@@ -5,7 +5,7 @@
 class AInt
 {
 private:
-	std::array<int, 100> mArr{};
+	std::array<int, 9> mArr{};
 
 public:
 	AInt(/* args */);
