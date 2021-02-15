@@ -7,10 +7,9 @@ int main(int argc, char const *argv[])
 {
 	AInt arr;
 
-	arr.fillArray(1, 100);
+	arr.fillArray(1, 20);
 	arr.printArray();
-	cout << "Occurs of '5': " << arr.countOccurs(5) << endl
-		 << endl;
+	cout << "\n";
 	arr.swapElems();
 	arr.printArray();
 
