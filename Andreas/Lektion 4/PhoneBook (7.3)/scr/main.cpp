@@ -20,7 +20,7 @@ int main(int argc, char const *argv[])
 	Person foundP = pBook.getPerson(sTerm);
 
 	cout << "You found '" << foundP.getName()
-		 << "' with " << sTerm << ". The phonenumber for this person is: "
+		 << "' with search term '" << sTerm << "'. The phonenumber for this person is: "
 		 << foundP.getPhoneNum() << "." << endl;
 
 	return 0;
