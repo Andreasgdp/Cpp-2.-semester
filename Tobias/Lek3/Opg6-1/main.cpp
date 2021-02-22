@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-    Date d1(2021, 2, 15);
+    Date d1(2007, 9, 5);
     cout << d1.getDayOfWeek() << endl;
 
     return 0;

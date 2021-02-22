@@ -20,7 +20,7 @@ int main()
            r4 = rand() % 6 +1;
            r5 = rand() % 6 +1;
            double sum = r1+r2+r3+r4+r5;
-           //cout <<"The sum of the 5 dice: "<< sum << endl;
+           cout <<"The sum of the 5 dice: "<< sum << endl;
            //cout <<"The average is: " << sum/5 << endl;
            nSum += sum;
     }

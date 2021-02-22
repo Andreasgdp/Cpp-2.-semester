@@ -3,6 +3,7 @@
 
 Pi::Pi()
 {
+    mOrder = 0;
 }
 
 Pi::Pi(int order)
