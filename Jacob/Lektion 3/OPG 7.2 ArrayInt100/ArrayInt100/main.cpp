@@ -7,7 +7,7 @@ int main()
 {
     ArrayInt100 array;
 
-    array.fillArray(0, 100);
+    array.fillArray(0, 10);
 
     array.printArray();
 

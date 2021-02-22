@@ -19,7 +19,7 @@ int main()
             sum += std::rand() % 6 + 1;
         }
         totalSum += sum;
-        //cout << "Sum (Roll " << i + 1 << "): " << sum << endl;
+        cout << "Sum (Roll " << i + 1 << "): " << sum << endl;
     }
 
     cout << "Average (1 die): " << totalSum / n / 5 << endl;

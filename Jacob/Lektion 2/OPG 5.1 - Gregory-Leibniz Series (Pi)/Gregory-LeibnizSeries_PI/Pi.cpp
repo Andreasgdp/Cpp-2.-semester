@@ -11,7 +11,7 @@ Pi::Pi(int order) {
 
 double Pi::calcPi() {
     for (int i = 0; i < mOrder; i++) {
-        mPi += pow(-1, i) * 1 / (2 * i + 1);
+        mPi += pow(-1, i) * (1 / (2 * i + 1));
     }
 
     return mPi *= 4;
