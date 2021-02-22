@@ -13,8 +13,7 @@ PhoneBook::~PhoneBook()
 
 void PhoneBook::addPerson(Person p)
 {
-	mPhoneBook[mNumInPhoneBook] = p;
-	mNumInPhoneBook += 1;
+	mPhoneBook.push_back(p);
 }
 
 Person PhoneBook::getPerson(string searchStr) const
@@ -22,14 +21,14 @@ Person PhoneBook::getPerson(string searchStr) const
 	std::array<Person, 100> peopleFound;
 	int numPeopleFound = 0;
 
-	for (int i = 0; i < mNumInPhoneBook; i++)
+	for (int i = 0; i < mPhoneBook.size(); i++)
 	{
-		if (mPhoneBook[i].getName().find(searchStr) != string::npos)
+		if (mPhoneBook.at(i).getName().find(searchStr) != string::npos)
 		{
-			cout << "Person w. name: '" << mPhoneBook[i].getName()
-				 << "' and phone number '" << mPhoneBook[i].getPhoneNum()
+			cout << "Person w. name: '" << mPhoneBook.at(i).getName()
+				 << "' and phone number '" << mPhoneBook.at(i).getPhoneNum()
 				 << "' was found w. search string '" << searchStr << "'." << endl;
-			peopleFound[numPeopleFound] = mPhoneBook[i];
+			peopleFound[numPeopleFound] = mPhoneBook.at(i);
 			numPeopleFound += 1;
 		}
 	}
