@@ -14,7 +14,7 @@ public:
     void swapElements();
 
 private:
-    std::array<int, 10> mArray{};
+    std::array<int, 9> mArray{};
 };
 
 #endif // ARRAYINT100_H

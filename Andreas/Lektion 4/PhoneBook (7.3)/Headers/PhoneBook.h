@@ -3,13 +3,12 @@
 #include "Person.h"
 
 #include <array>
+#include <vector>
 
 class PhoneBook
 {
 private:
-	std::array<Person, 100> mPhoneBook;
-	int mNumInPhoneBook = 0;
-
+	std::vector<Person> mPhoneBook;
 public:
 	PhoneBook(/* args */);
 	~PhoneBook();
