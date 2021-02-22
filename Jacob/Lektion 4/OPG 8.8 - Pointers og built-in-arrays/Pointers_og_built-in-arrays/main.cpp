@@ -24,6 +24,7 @@ int main()
     // d)
     cout << "&values[0]: " << &values[0] << endl;
     cout << "vPtr: " << vPtr << endl;
+    vPtr = values;
     vPtr = &values[0];
     cout << "vPtr: " << vPtr << endl;
 
@@ -41,17 +42,14 @@ int main()
 
     // g)
     for (size_t i = 0; i < sizeof(values) / sizeof(values[0]); i++) {
-        vPtr = &values[i];
-        cout << *vPtr << " ";
+        cout << vPtr[i] << " ";
     }
     cout << endl;
 
     // h)
-    vPtr = &values[0];
-    cout << *(vPtr + 4) << " " << endl;
-    cout << *(values + 4) << " " << endl;
-    vPtr = &values[4];
-    cout << *vPtr << " " << endl;
+    cout << *(vPtr + 4) << endl;
+    cout << *(values + 4) << endl;
+    cout << vPtr[4] << endl;
 
     // i)
     /*
