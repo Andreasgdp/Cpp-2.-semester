@@ -48,10 +48,6 @@ int main()
     }
 
     cout << endl << endl;
-    /*
-    for (int i = 1; i <= 30; i++) {
-        cout << i << ": " << histogram[i] << endl;
-    }
-    */
+
     return 0;
 }
