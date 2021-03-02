@@ -45,13 +45,13 @@ int main()
 
     //h)
     //array subscript notation
-    cout << values[3] << endl;
+    cout << values[4] << endl;
     //pointer/offset notation w. array
-    cout << *(values + 3) << endl;
+    cout << *(values + 4) << endl;
     //pointer subscript notation
-    cout << vPtr[3] << endl;
+    cout << vPtr[4] << endl;
     //pointer/offset notation w. pointer
-    cout << *(vPtr + 3) << endl;
+    cout << *(vPtr + 4) << endl;
 
     //i)
     // The addres stored in vPtr + 3 means the 4 elemet of values og values[3]. That means it will be 8 in this case.
