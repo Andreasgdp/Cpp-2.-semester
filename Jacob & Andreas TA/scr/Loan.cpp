@@ -49,6 +49,7 @@ void Loan::outputPeriodicalPayments(std::ostream &ost) const
 	{
 		ost << std::setw(5) << i << ": " << std::setw(14) << *(*(array + i) + 0) << " | " << std::setw(13) << *(*(array + i) + 1) << " | " << std::setw(17) << *(*(array + i) + 2) << " | " << std::endl;
 	}
+	delete [] array;
 }
 
 void Loan::constructArray(double **arr, int terms) const
