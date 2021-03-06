@@ -42,7 +42,12 @@ public:
 	// Output the periodical payments with unpaid balance paid interest and repayment of each payment to stream object ost
 	void outputPeriodicalPayments(std::ostream &ost) const;
 
-	void constructArray(double **arr, int length) const;
+	void constructArray(double **arr, size_t length) const;
+
+	template <size_t N>
+	void constructArray2(double (*arr)[N][3], size_t length) const;
+	
+	
 
 private:
 	double mDebt, mInterestRate;
