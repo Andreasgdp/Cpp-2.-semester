@@ -48,7 +48,7 @@ int AInt::countOccurs(int num) const
 	int counter = 0;
 	for (size_t i = 0; i < mArr.size(); i++)
 	{
-		counter = (mArr[i] == num) ? counter += 1 : counter;
+		counter = (mArr[i] == num) ? counter++ : counter;
 	}
 	return counter;
 }
@@ -57,9 +57,8 @@ void AInt::swapElems()
 {
 	for (size_t i = 0, j = mArr.size() - 1; i < mArr.size() / 2; i++, j--)
 	{
-		int first = mArr[i];
-		int last = mArr[j];
-		mArr[i] = last;
-		mArr[j] = first;
+		int temp = mArr[j];
+		mArr[j] = mArr[i];
+		mArr[i] = temp;
 	}
 }
