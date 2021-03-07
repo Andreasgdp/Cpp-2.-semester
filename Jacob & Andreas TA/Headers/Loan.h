@@ -47,6 +47,7 @@ public:
 	template <size_t N>
 	void constructArray2(double (*arr)[N][3], size_t length) const;
 	
+	void constructArray3(double **arr, size_t length) const;
 	
 
 private:
