@@ -97,20 +97,16 @@ void Loan::constructArray2(double **arr, size_t terms) const
 	// Tilbagebetaling
 	*(*(arr + 0) + 2) = *(*(arr + 0) + 1) * 0.36;
 
-	bool first = true;
 	double **end = &arr[terms];
+	++arr;
 	for (double **curr = arr; curr != end; ++curr)
 	{
-		if (!first)
-		{
-			// Restgæld
-			*(*curr + 0) = sidsteRestgeld = sidsteRestgeld - afdrag;
-			// Renteudgift
-			*(*curr + 1) = *(*curr + 0) * rentePrTermin;
-			afdrag = ydelse - *(*curr + 1);
-			// Tilbagebetaling
-			*(*curr + 2) = *(*curr + 1) * 0.36;
-		}
-		first = false;
+		// Restgæld
+		*(*curr + 0) = sidsteRestgeld = sidsteRestgeld - afdrag;
+		// Renteudgift
+		*(*curr + 1) = *(*curr + 0) * rentePrTermin;
+		afdrag = ydelse - *(*curr + 1);
+		// Tilbagebetaling
+		*(*curr + 2) = *(*curr + 1) * 0.36;
 	}
 }
