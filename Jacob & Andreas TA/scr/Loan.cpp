@@ -39,76 +39,74 @@ void Loan::outputPeriodicalPayments(std::ostream &ost) const
 	for (int i = 0; i < testTerms + 1; i++)
 		array[i] = new double[3];
 
-	// constructArray(array, testTerms);
-	constructArray2(array, testTerms);
+	// Using index to iterate over array
+	// printArray(array, testTerms, ost);
 
-	ost << std::setw(22) << "Restgæld: "
-		<< " | " << std::setw(13) << "Renteudgift:"
-		<< " | " << std::setw(17) << " Tilbagebetaling:"
-		<< " | " << std::endl;
-	for (size_t i = 0; i < testTerms + 1; i++)
-	{
-		ost << std::fixed << std::setprecision(2) << std::setw(5) << i << ": " << std::setw(14) << *(*(array + i) + 0) << " | " << std::setw(13) << *(*(array + i) + 1) << " | " << std::setw(17) << *(*(array + i) + 2) << " | " << std::endl;
-	}
+	// Using pointer to itterate over the array instead of index.
+	printArray2(array, testTerms, ost);
 
 	for (int i = 0; i < testTerms + 1; i++)
 		delete[] array[i];
 	delete[] array;
 }
 
-void Loan::constructArray(double **arr, size_t terms) const
+void Loan::printArray(double **arr, size_t terms, std::ostream &ost) const
 {
 	double ydelse = payment(terms);
 	double rentePrTermin = (mInterestRate / mPaymentsPerYear);
 	double rente = mDebt * rentePrTermin;
-	double afdrag = ydelse - rente;
+	double afdrag = 0;
+	double restGeld = mDebt;
 
-	// Restgæld
-	*(*(arr + 0) + 0) = mDebt;
-	// Renteudgift
-	*(*(arr + 0) + 1) = mDebt * rentePrTermin;
-	// Tilbagebetaling
-	*(*(arr + 0) + 2) = *(*(arr + 0) + 1) * 0.306;
+	ost << std::setw(22) << "Restgæld: "
+		<< " | " << std::setw(13) << "Renteudgift:"
+		<< " | " << std::setw(17) << " Tilbagebetaling:"
+		<< " | " << std::endl;
 
 	// Using index to iterate over array
-	for (size_t i = 1; i <= terms; i++)
+	for (size_t i = 0; i <= terms; i++)
 	{
 		// Restgæld
-		*(*(arr + i) + 0) = *(*(arr + i - 1) + 0) - afdrag;
+
+		*(*(arr + i) + 0) = restGeld = restGeld - afdrag;
 		// Renteudgift
-		*(*(arr + i) + 1) = *(*(arr + i) + 0) * rentePrTermin;
-		afdrag = ydelse - *(*(arr + i) + 1);
+		*(*(arr + i) + 1) = restGeld * rentePrTermin;
 		// Tilbagebetaling
 		*(*(arr + i) + 2) = *(*(arr + i) + 1) * 0.306;
+
+		afdrag = ydelse - *(*(arr + i) + 1);
+
+		ost << std::fixed << std::setprecision(2) << std::setw(5) << i << ": " << std::setw(14) << *(*(arr + i) + 0) << " | " << std::setw(13) << *(*(arr + i) + 1) << " | " << std::setw(17) << *(*(arr + i) + 2) << " | " << std::endl;
 	}
 }
 
-void Loan::constructArray2(double **arr, size_t terms) const
+void Loan::printArray2(double **arr, size_t terms, std::ostream &ost) const
 {
 	double ydelse = payment(terms);
 	double rentePrTermin = (mInterestRate / mPaymentsPerYear);
 	double rente = mDebt * rentePrTermin;
-	double afdrag = ydelse - rente;
-	double sidsteRestgeld;
+	double afdrag = 0;
+	double sidsteRestgeld = mDebt;
 
-	// Restgæld
-	*(*(arr + 0) + 0) = sidsteRestgeld = mDebt;
-	// Renteudgift
-	*(*(arr + 0) + 1) = mDebt * rentePrTermin;
-	// Tilbagebetaling
-	*(*(arr + 0) + 2) = *(*(arr + 0) + 1) * 0.306;
+	ost << std::setw(22) << "Restgæld: "
+		<< " | " << std::setw(13) << "Renteudgift:"
+		<< " | " << std::setw(17) << " Tilbagebetaling:"
+		<< " | " << std::endl;
 
 	// Using pointer to itterate over the array instead of index.
 	double **end = &arr[terms];
-	++arr;
-	for (double **curr = arr; curr != end; ++curr)
+	int counter = 0;
+	for (double **curr = arr; curr != end + 1; ++curr)
 	{
 		// Restgæld
 		*(*curr + 0) = sidsteRestgeld = sidsteRestgeld - afdrag;
 		// Renteudgift
-		*(*curr + 1) = *(*curr + 0) * rentePrTermin;
-		afdrag = ydelse - *(*curr + 1);
+		*(*curr + 1) = sidsteRestgeld * rentePrTermin;
 		// Tilbagebetaling
 		*(*curr + 2) = *(*curr + 1) * 0.306;
+
+		afdrag = ydelse - *(*curr + 1);
+
+		ost << std::fixed << std::setprecision(2) << std::setw(5) << counter++ << ": " << std::setw(14) << *(*curr + 0) << " | " << std::setw(13) << *(*curr + 1) << " | " << std::setw(17) << *(*curr + 2) << " | " << std::endl;
 	}
 }
