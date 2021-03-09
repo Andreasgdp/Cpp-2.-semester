@@ -1,19 +1,34 @@
 #include "../Headers/Loan.h"
+#include <iostream>
 #include <iomanip>
 #include <cmath>
 
 int main(int argc, char const *argv[])
 {
-	Loan l(100000, 10, 4, 0.03);
+	double debt, years, paymentsPerYear, interestRate;
+	std::cout << "Enter debt, years, peymentsPerYear, intrestRate: ";
+	std::cin >> debt >> years >> paymentsPerYear >> interestRate;
 
-	std::cout << "totalInterest" << l.totalInterest() << std::endl;
+	Loan l(debt, years, paymentsPerYear, interestRate);
 
-	std::cout << "Lånets løbetid: 10 år" << std::endl;
-	std::cout << "Lånebeløb 100000 kr" << std::endl;
-	std::cout << "Årlige renter: 3%" << std::endl;
-	std::cout << "Betalinger per år: 4 betalinger" << std::endl;
+	l.printLoanInformation(std::cout);
+	std::cout << "Total Interest: " << l.totalInterest() << std::endl;
+	std::cout << "Total Payment: " << l.totalPayment() << std::endl;
+	std::cout << "Total Interest Tax Deducted: " << l.totalInterestTaxDeducted(30.6) << std::endl;
 
 	l.outputPeriodicalPayments(std::cout);
+
+	std::cout << std::endl
+			  << "-----------------------------------------------------------------------" << std::endl;
+
+	// Other lånetyper - Fastforrentet obligationslån, løbetid: 30 år, Obligations-renteprocent: 0.5% (https://netbank.totalkredit.dk/netbank/showStockExchangeInternal.do)
+	Loan lObligationslan(100000, 30, 4, 0.5);
+	std::cout << std::endl
+			  << "Obligationslaan: " << std::endl;
+	lObligationslan.printLoanInformation(std::cout);
+	std::cout << "Total Interest: " << lObligationslan.totalInterest() << std::endl;
+	std::cout << "Total Payment: " << lObligationslan.totalPayment() << std::endl;
+	std::cout << "Total Interest Tax Deducted: " << lObligationslan.totalInterestTaxDeducted(30.6) << std::endl;
 
 	return 0;
 }
