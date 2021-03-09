@@ -2,7 +2,6 @@
 #define LOAN_H
 
 #include <iostream>
-#include <array>
 
 class Loan
 {
@@ -45,7 +44,6 @@ public:
 	void constructArray(double **arr, size_t length) const;
 
 	void constructArray2(double **arr, size_t length) const;
-	
 
 private:
 	double mDebt, mInterestRate;

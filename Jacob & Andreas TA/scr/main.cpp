@@ -1,10 +1,12 @@
 #include "../Headers/Loan.h"
-#include <iostream>
+#include <iomanip>
 #include <cmath>
 
 int main(int argc, char const *argv[])
 {
 	Loan l(100000, 10, 4, 0.03);
+
+	std::cout << "totalInterest" << l.totalInterest() << std::endl;
 
 	std::cout << "Lånets løbetid: 10 år" << std::endl;
 	std::cout << "Lånebeløb 100000 kr" << std::endl;

@@ -1,13 +1,12 @@
 #include "../Headers/Loan.h"
-#include <iostream>
 #include <iomanip>
-#include <array>
 #include <cmath>
 
 double Loan::totalInterest() const
 {
-	// Using bankers rounding w. lrint()
-	return lrint(totalPayment() - mDebt);
+	// Implementing Bankers rounding on Øre not Krone
+	double number = (totalPayment() - mDebt) * 100;
+	return lrint(number) / 100.0;
 }
 
 double Loan::payment(int terms) const
@@ -34,6 +33,7 @@ void Loan::outputPeriodicalPayments(std::ostream &ost) const
 	int const terms = mYears * mPaymentsPerYear;
 	int const testTerms = (10 * 4);
 
+	// Creating 2D-pointer-pointer-array
 	double **array;
 	array = new double *[testTerms + 1];
 	for (int i = 0; i < testTerms + 1; i++)
@@ -48,7 +48,7 @@ void Loan::outputPeriodicalPayments(std::ostream &ost) const
 		<< " | " << std::endl;
 	for (size_t i = 0; i < testTerms + 1; i++)
 	{
-		ost << std::setw(5) << i << ": " << std::setw(14) << *(*(array + i) + 0) << " | " << std::setw(13) << *(*(array + i) + 1) << " | " << std::setw(17) << *(*(array + i) + 2) << " | " << std::endl;
+		ost << std::fixed << std::setprecision(2) << std::setw(5) << i << ": " << std::setw(14) << *(*(array + i) + 0) << " | " << std::setw(13) << *(*(array + i) + 1) << " | " << std::setw(17) << *(*(array + i) + 2) << " | " << std::endl;
 	}
 
 	for (int i = 0; i < testTerms + 1; i++)
@@ -68,8 +68,9 @@ void Loan::constructArray(double **arr, size_t terms) const
 	// Renteudgift
 	*(*(arr + 0) + 1) = mDebt * rentePrTermin;
 	// Tilbagebetaling
-	*(*(arr + 0) + 2) = *(*(arr + 0) + 1) * 0.36;
+	*(*(arr + 0) + 2) = *(*(arr + 0) + 1) * 0.306;
 
+	// Using index to iterate over array
 	for (size_t i = 1; i <= terms; i++)
 	{
 		// Restgæld
@@ -78,7 +79,7 @@ void Loan::constructArray(double **arr, size_t terms) const
 		*(*(arr + i) + 1) = *(*(arr + i) + 0) * rentePrTermin;
 		afdrag = ydelse - *(*(arr + i) + 1);
 		// Tilbagebetaling
-		*(*(arr + i) + 2) = *(*(arr + i) + 1) * 0.36;
+		*(*(arr + i) + 2) = *(*(arr + i) + 1) * 0.306;
 	}
 }
 
@@ -95,8 +96,9 @@ void Loan::constructArray2(double **arr, size_t terms) const
 	// Renteudgift
 	*(*(arr + 0) + 1) = mDebt * rentePrTermin;
 	// Tilbagebetaling
-	*(*(arr + 0) + 2) = *(*(arr + 0) + 1) * 0.36;
+	*(*(arr + 0) + 2) = *(*(arr + 0) + 1) * 0.306;
 
+	// Using pointer to itterate over the array instead of index.
 	double **end = &arr[terms];
 	++arr;
 	for (double **curr = arr; curr != end; ++curr)
@@ -107,6 +109,6 @@ void Loan::constructArray2(double **arr, size_t terms) const
 		*(*curr + 1) = *(*curr + 0) * rentePrTermin;
 		afdrag = ydelse - *(*curr + 1);
 		// Tilbagebetaling
-		*(*curr + 2) = *(*curr + 1) * 0.36;
+		*(*curr + 2) = *(*curr + 1) * 0.306;
 	}
 }
