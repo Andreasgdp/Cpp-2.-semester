@@ -59,7 +59,6 @@ void Loan::printArray(double **arr, size_t terms, std::ostream &ost) const
 {
 	double paymentVar = payment(terms);
 	double intrestPrTerm = (_interestRate / _paymentsPerYear);
-	double intrest = _debt * intrestPrTerm;
 	double repayment = 0;
 	double lastRemainingDebt = _debt;
 
@@ -87,7 +86,6 @@ void Loan::printArray2(double **arr, size_t terms, std::ostream &ost) const
 {
 	double paymentVar = payment(terms);
 	double intrestPrTerm = (_interestRate / _paymentsPerYear);
-	double intrest = _debt * intrestPrTerm;
 	double repayment = 0;
 	double lastRemainingDebt = _debt;
 

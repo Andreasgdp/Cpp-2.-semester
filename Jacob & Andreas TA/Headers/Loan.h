@@ -46,7 +46,7 @@ public:
 	void printArray2(double **arr, size_t length, std::ostream &ost) const;
 
 	void printLoanInformation(std::ostream &ost) const;
-	
+
 private:
 	double _debt, _interestRate;
 	int _years, _paymentsPerYear;

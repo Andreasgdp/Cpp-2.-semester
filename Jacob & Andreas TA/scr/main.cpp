@@ -21,7 +21,7 @@ int main(int argc, char const *argv[])
 	std::cout << std::endl
 			  << "-----------------------------------------------------------------------" << std::endl;
 
-	// Other lånetyper - Fastforrentet obligationslån, løbetid: 30 år, Obligations-renteprocent: 0.5% (https://netbank.totalkredit.dk/netbank/showStockExchangeInternal.do)
+	// Andre lånetyper - Fastforrentet obligationslån, løbetid: 30 år, Obligations-renteprocent: 0.5% (https://netbank.totalkredit.dk/netbank/showStockExchangeInternal.do)
 	Loan lObligationslan(100000, 30, 4, 0.5);
 	std::cout << std::endl
 			  << "Obligationslaan: " << std::endl;
