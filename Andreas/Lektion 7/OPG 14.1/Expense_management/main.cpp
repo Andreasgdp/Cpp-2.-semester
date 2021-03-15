@@ -52,8 +52,8 @@ int main()
             // if a category is not already in categorySumPrice
             if (!(categorySumPrice[j][0].compare(productCategory[i][1]) == 0))
             {
-                std::vector<std::string> tempVec2{productCategory[i][1], "0"};
-                categorySumPrice.push_back(tempVec2);
+                std::vector<std::string> tempVec{productCategory[i][1], "0"};
+                categorySumPrice.push_back(tempVec);
             }
         }
     }
@@ -219,6 +219,9 @@ theend:;
         {
             std::cout << "Category: '" << categorySumPrice[i][0] << "' with total Price: '" << categorySumPrice[i][1] << "'" << std::endl;
         }
+    }
+    else if (receiptShop.compare("REMA1000") == 0)
+    {
     }
 
     return 0;
