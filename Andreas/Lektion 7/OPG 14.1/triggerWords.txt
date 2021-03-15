@@ -7,3 +7,4 @@ AEG;food
 LOG;food
 GULERODDER;food
 KYLLING;food
+OPVASKEBØRSTE;tools
