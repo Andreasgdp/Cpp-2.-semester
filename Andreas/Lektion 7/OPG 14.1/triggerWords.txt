@@ -6,5 +6,5 @@ BANAN;food
 AEG;food
 LOEG;food
 GULEROEDDER;food
-KYLLING;food
 OPVASKEBOERSTE;tools
+KYLLING;food

@@ -16,7 +16,7 @@ int main()
     std::string triggerWords("../triggerWords.txt");
     triggerStream.open(triggerWords);
     checkForFail();
-    std::vector<std::vector<std::string>> productCategory;
+    std::vector<std::vector<std::string>> triggerWordCategories;
     while (!triggerStream.eof())
     {
         std::string line;
@@ -36,25 +36,35 @@ int main()
         std::getline(sline, category);
 
         std::vector<std::string> tempVec{product, category};
-        productCategory.push_back(tempVec);
+        triggerWordCategories.push_back(tempVec);
     }
 
     triggerStream.close();
 
     std::vector<std::vector<std::string>> categorySumPrice;
-    std::vector<std::string> tempVec{productCategory[0][1], "0"};
+    std::vector<std::string> tempVec{triggerWordCategories[0][1], "0"};
     categorySumPrice.push_back(tempVec);
 
-    for (size_t i = 1; i < productCategory.size(); i++)
+    for (size_t i = 1; i < triggerWordCategories.size(); i++)
     {
+        bool addNewCategory = false;
         for (size_t j = 0; j < categorySumPrice.size(); j++)
         {
             // if a category is not already in categorySumPrice
-            if (!(categorySumPrice[j][0].compare(productCategory[i][1]) == 0))
+            if ((categorySumPrice[j][0].compare(triggerWordCategories[i][1]) == 0))
             {
-                std::vector<std::string> tempVec{productCategory[i][1], "0"};
-                categorySumPrice.push_back(tempVec);
+                addNewCategory = false;
+                break;
             }
+            else
+            {
+                addNewCategory = true;
+            }
+        }
+        if (addNewCategory)
+        {
+            std::vector<std::string> tempVec{triggerWordCategories[i][1], "0"};
+            categorySumPrice.push_back(tempVec);
         }
     }
 
@@ -200,13 +210,13 @@ theend:;
 
             double itemTotalPrice = itemPrice - dicsountValue;
 
-            for (size_t i = 0; i < productCategory.size(); i++)
+            for (size_t i = 0; i < triggerWordCategories.size(); i++)
             {
-                if (itemAndPrice.find(productCategory[i][0]) != std::string::npos)
+                if (itemAndPrice.find(triggerWordCategories[i][0]) != std::string::npos)
                 {
                     for (size_t j = 0; j < categorySumPrice.size(); j++)
                     {
-                        if (categorySumPrice[j][0].find(productCategory[i][1]) != std::string::npos)
+                        if (categorySumPrice[j][0].find(triggerWordCategories[i][1]) != std::string::npos)
                         {
                             categorySumPrice[j][1] = std::to_string(std::stod(categorySumPrice[j][1]) + itemTotalPrice);
                         }
