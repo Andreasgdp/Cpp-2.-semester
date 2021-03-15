@@ -4,7 +4,7 @@ YOGGI;food
 PAERE;food
 BANAN;food
 AEG;food
-LOG;food
-GULERODDER;food
+LOEG;food
+GULEROEDDER;food
 KYLLING;food
-OPVASKEBØRSTE;tools
+OPVASKEBOERSTE;tools
