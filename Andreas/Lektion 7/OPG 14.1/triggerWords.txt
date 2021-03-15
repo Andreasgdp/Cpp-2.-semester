@@ -1,0 +1,9 @@
+TOMATER;food
+HAVREGRY;food
+YOGGI;food
+PAERE;food
+BANAN;food
+AEG;food
+LOG;food
+GULERODDER;food
+KYLLING;food
