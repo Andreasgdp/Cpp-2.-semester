@@ -4,8 +4,8 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-        Loan.cpp \
+        ReceitReader.cpp \
         main.cpp
 
 HEADERS += \
-    Loan.h
+    ReceitReader.h
