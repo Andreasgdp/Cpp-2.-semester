@@ -98,13 +98,13 @@ int main()
     // Close shops.txt
     shopStream.close();
 
-    // std::string receiptName;
-    // cout << "Enter receipt name (filename of receipt txt-file e.g. 'netto'): ";
-    // std::cin >> receiptName;
+    std::string receiptName;
+    cout << "Enter receipt name (filename of receipt txt-file e.g. 'netto'): ";
+    std::cin >> receiptName;
 
-    // std::string receipt("../" + receiptName + ".txt");
+    std::string receipt("../" + receiptName + ".txt");
     // std::string receipt("../nettoRename.txt");
-    std::string receipt("../rema1000.txt");
+    // std::string receipt("../rema1000.txt");
     std::ifstream categorySumStream;
     categorySumStream.open(receipt);
     checkForFail();
