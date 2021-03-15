@@ -208,22 +208,9 @@ theend:;
             std::string itemPriceString = itemAndPrice.substr(itemAndPrice.find(",") - 2, 5);
 
             itemPriceString.replace(itemPriceString.find(","), 1, ".");
-            stringstream geek1(itemPriceString);
-            double itemPrice = 0;
-            geek1 >> itemPrice;
+            double itemPrice = std::stod(itemPriceString);
 
-            std::string s = discountNameAndValue;
-            std::string delimiter = "RABAT";
-            s.erase(0, 0 + delimiter.length());
-            delimiter = " ";
-
-            size_t pos = 0;
-            std::string token;
-            while ((pos = s.find(delimiter)) != std::string::npos)
-            {
-                token = s.substr(0, pos);
-                s.erase(0, pos + delimiter.length());
-            }
+            std::string s = discountNameAndValue.substr(discountNameAndValue.find(",") - 2, 5);
             s.replace(s.find(","), 1, ".");
             double dicsountValue = std::stod(s);
 
