@@ -103,7 +103,8 @@ int main()
     // std::cin >> receiptName;
 
     // std::string receipt("../" + receiptName + ".txt");
-    std::string receipt("../nettoRename.txt");
+    // std::string receipt("../nettoRename.txt");
+    std::string receipt("../rema1000.txt");
     std::ifstream categorySumStream;
     categorySumStream.open(receipt);
     checkForFail();
@@ -193,8 +194,6 @@ theend:;
             }
         }
 
-        categorySumStream.close();
-
         for (size_t i = 0; i < receiptItems.size(); i++)
         {
             std::string itemAndPrice = receiptItems[i][0];
@@ -232,7 +231,69 @@ theend:;
     }
     else if (receiptShop.compare("REMA1000") == 0)
     {
+        std::string matchingProduct;
+        while (!categorySumStream.eof())
+        {
+            while (categorySumStream >> matchingProduct)
+            {
+                for (size_t i = 0; i < triggerWordCategories.size(); i++)
+                {
+                    if (matchingProduct.compare(triggerWordCategories[i][0]) == 0)
+                    {
+                        std::string line;
+                        std::getline(categorySumStream, line);
+                        std::istringstream sline{line};
+
+                        // Skip empty lines
+                        if (line.size() == 0)
+                        {
+                            continue;
+                        }
+
+                        // Get amount and price
+                        std::string int1;
+                        std::getline(sline, int1, ',');
+                        int1.erase(std::remove(int1.begin(), int1.end(), ' '), int1.end());
+
+                        std::string int2;
+                        std::getline(sline, int2, ' ');
+                        int2.erase(std::remove(int2.begin(), int2.end(), ' '), int2.end());
+
+                        std::string int3;
+                        std::getline(sline, int3, ',');
+                        int3.erase(std::remove(int3.begin(), int3.end(), ' '), int3.end());
+
+                        std::string int4;
+                        std::getline(sline, int4);
+                        int4.erase(std::remove(int4.begin(), int4.end(), ' '), int4.end());
+
+                        double amount = std::stod(int1) + (std::stod(int2) / 100);
+                        double price = std::stod(int3) + (std::stod(int4) / 100);
+
+                        for (size_t j = 0; j < categorySumPrice.size(); j++)
+                        {
+                            if (triggerWordCategories[i][1] == categorySumPrice[j][0])
+                            {
+                                categorySumPrice[j][1] = to_string(std::stod(categorySumPrice[j][1]) + price);
+                            }
+                        }
+                    }
+                }
+
+                if (categorySumStream.fail())
+                {
+                    categorySumStream.clear(categorySumStream.rdstate() & ~std::ios_base::failbit);
+                }
+            }
+        }
+
+        for (size_t i = 0; i < categorySumPrice.size(); i++)
+        {
+            std::cout << "Category: '" << categorySumPrice[i][0] << "' with total Price: '" << categorySumPrice[i][1] << "'" << std::endl;
+        }
     }
+
+    categorySumStream.close();
 
     return 0;
 }

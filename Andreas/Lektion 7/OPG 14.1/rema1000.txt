@@ -2,6 +2,7 @@ REMA1000              Beskrivelse       Antal   Pris
 Svenstrupvej 94       MAXI BLEER         1,00  53,00
 5260 Odense S         ØKO. HAVREGRYN     1,00  10,50
                       ØKO. HAVREGRYN     1,00  10,50
+                      SAKS               1,00  20,50
 Dato: 11. marts 2020  I alt inkl. moms         74,00
 Tid: 15:34:00         Heraf udgør moms   25%
                                                14,81
