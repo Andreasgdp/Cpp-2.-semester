@@ -60,16 +60,6 @@ int main()
     innerForLoop:;
     }
 
-    // std::string receiptName;
-    // cout << "Enter receipt name (filename of receipt txt-file e.g. 'netto'): ";
-    // std::cin >> receiptName;
-
-    // std::string receipt("../" + receiptName + ".txt");
-    std::string receipt("../nettoRename.txt");
-    std::ifstream categoryStream;
-    categoryStream.open(receipt);
-    checkForFail();
-
     // Open shops.txt
     std::string shops("../shops.txt");
     std::ifstream shopStream;
@@ -100,16 +90,26 @@ int main()
     // Close shops.txt
     shopStream.close();
 
+    // std::string receiptName;
+    // cout << "Enter receipt name (filename of receipt txt-file e.g. 'netto'): ";
+    // std::cin >> receiptName;
+
+    // std::string receipt("../" + receiptName + ".txt");
+    std::string receipt("../nettoRename.txt");
+    std::ifstream categorySumStream;
+    categorySumStream.open(receipt);
+    checkForFail();
+
     // Open receipt - Which receipt?
-    std::ifstream receiptStream;
-    receiptStream.open(receipt);
+    std::ifstream receiptShopStream;
+    receiptShopStream.open(receipt);
     checkForFail();
 
     // Find what kind of shop from shops.txt
     std::string receiptShop;
-    while (!receiptStream.eof())
+    while (!receiptShopStream.eof())
     {
-        while (receiptStream >> receiptShop)
+        while (receiptShopStream >> receiptShop)
         {
             for (size_t i = 0; i < vecShops.size(); i++)
             {
@@ -120,28 +120,28 @@ int main()
                 }
             }
 
-            if (receiptStream.fail())
+            if (receiptShopStream.fail())
             {
-                receiptStream.clear(receiptStream.rdstate() & ~std::ios_base::failbit);
+                receiptShopStream.clear(receiptShopStream.rdstate() & ~std::ios_base::failbit);
             }
         }
     }
 theend:;
 
-    receiptStream.close();
+    receiptShopStream.close();
 
     if (receiptShop.compare("NETTO") == 0)
     {
         std::vector<std::vector<std::string>> receiptItems;
         bool firstPartRemoved = false;
-        while (!categoryStream.eof())
+        while (!categorySumStream.eof())
         {
-            if (categoryStream.fail())
+            if (categorySumStream.fail())
             {
-                categoryStream.clear(categoryStream.rdstate() & ~std::ios_base::failbit);
+                categorySumStream.clear(categorySumStream.rdstate() & ~std::ios_base::failbit);
             }
             std::string line;
-            std::getline(categoryStream, line);
+            std::getline(categorySumStream, line);
             std::istringstream sline{line};
 
             // Skip empty lines
@@ -155,7 +155,7 @@ theend:;
                 std::string item;
                 std::getline(sline, item, '.');
                 std::string line;
-                std::getline(categoryStream, line);
+                std::getline(categorySumStream, line);
                 std::istringstream sline{line};
                 firstPartRemoved = true;
             }
@@ -185,7 +185,7 @@ theend:;
             }
         }
 
-        categoryStream.close();
+        categorySumStream.close();
 
         for (size_t i = 0; i < receiptItems.size(); i++)
         {
