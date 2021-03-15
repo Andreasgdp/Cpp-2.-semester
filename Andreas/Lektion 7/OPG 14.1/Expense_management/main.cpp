@@ -54,10 +54,8 @@ int main()
             {
                 std::vector<std::string> tempVec2{productCategory[i][1], "0"};
                 categorySumPrice.push_back(tempVec2);
-                goto innerForLoop;
             }
         }
-    innerForLoop:;
     }
 
     // Open shops.txt
