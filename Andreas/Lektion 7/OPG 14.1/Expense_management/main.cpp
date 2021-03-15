@@ -41,8 +41,27 @@ int main()
 
     triggerStream.close();
 
+    std::vector<std::vector<std::string>> categorySumPrice;
+    std::vector<std::string> tempVec{productCategory[0][1], "0"};
+    categorySumPrice.push_back(tempVec);
+
+    for (size_t i = 1; i < productCategory.size(); i++)
+    {
+        for (size_t j = 0; j < categorySumPrice.size(); j++)
+        {
+            // if a category is not already in categorySumPrice
+            if (!(categorySumPrice[j][0].compare(productCategory[i][1]) == 0))
+            {
+                std::vector<std::string> tempVec2{productCategory[i][1], "0"};
+                categorySumPrice.push_back(tempVec2);
+                goto innerForLoop;
+            }
+        }
+    innerForLoop:;
+    }
+
     // std::string receiptName;
-    // cout << "Enter receipt name: ";
+    // cout << "Enter receipt name (filename of receipt txt-file e.g. 'netto'): ";
     // std::cin >> receiptName;
 
     // std::string receipt("../" + receiptName + ".txt");
@@ -113,7 +132,6 @@ theend:;
 
     if (receiptShop.compare("NETTO") == 0)
     {
-        std::vector<std::vector<std::string>> categorySumPrice;
         std::vector<std::vector<std::string>> receiptItems;
         bool firstPartRemoved = false;
         while (!categoryStream.eof())
@@ -168,59 +186,25 @@ theend:;
         }
 
         categoryStream.close();
-        std::vector<std::string> tempVec{productCategory[0][1]};
-        categorySumPrice.push_back(tempVec);
-        categorySumPrice[0].push_back("0");
-
-        for (size_t i = 1; i < productCategory.size(); i++)
-        {
-            for (size_t j = 0; j < categorySumPrice.size(); j++)
-            {
-                // if a category is not already in categorySumPrice
-                if (!(categorySumPrice[j][0].compare(productCategory[i][1]) == 0))
-                {
-                    std::vector<std::string> tempVec2{productCategory[i][1]};
-                    categorySumPrice.push_back(tempVec2);
-                    categorySumPrice[j + 1].push_back("0");
-                    goto innerForLoop;
-                }
-            }
-        innerForLoop:;
-        }
 
         for (size_t i = 0; i < receiptItems.size(); i++)
         {
             std::string itemAndPrice = receiptItems[i][0];
             std::string discountNameAndValue = receiptItems[i][1];
 
-            string alpha;
-            for (int i = 0; i < itemAndPrice.length(); i++)
-            {
-                if ((itemAndPrice[i] >= 'A' && itemAndPrice[i] <= 'Z') ||
-                    (itemAndPrice[i] >= 'a' && itemAndPrice[i] <= 'z') || itemAndPrice[i] == ' ')
-                {
-                    alpha.push_back(itemAndPrice[i]);
-                }
-            }
+            std::string tempString = itemAndPrice.substr(itemAndPrice.find(",") - 2, 5);
+            tempString.replace(tempString.find(","), 1, ".");
+            double itemPrice = std::stod(tempString);
 
-            std::string item = alpha;
-
-            std::string itemPriceString = itemAndPrice.substr(itemAndPrice.find(",") - 2, 5);
-
-            itemPriceString.replace(itemPriceString.find(","), 1, ".");
-            double itemPrice = std::stod(itemPriceString);
-
-            std::string s = discountNameAndValue.substr(discountNameAndValue.find(",") - 2, 5);
-            s.replace(s.find(","), 1, ".");
-            double dicsountValue = std::stod(s);
+            tempString = discountNameAndValue.substr(discountNameAndValue.find(",") - 2, 5);
+            tempString.replace(tempString.find(","), 1, ".");
+            double dicsountValue = std::stod(tempString);
 
             double itemTotalPrice = itemPrice - dicsountValue;
-            // std::cout << "Item: " << item << std::endl;
-            // std::cout << "Item total price: " << itemTotalPrice << std::endl;
 
             for (size_t i = 0; i < productCategory.size(); i++)
             {
-                if (item.find(productCategory[i][0]) != std::string::npos)
+                if (itemAndPrice.find(productCategory[i][0]) != std::string::npos)
                 {
                     for (size_t j = 0; j < categorySumPrice.size(); j++)
                     {
@@ -232,10 +216,10 @@ theend:;
                 }
             }
         }
+        std::cout << std::endl;
         for (size_t i = 0; i < categorySumPrice.size(); i++)
         {
-            std::cout << "Category: " << categorySumPrice[i][0] << std::endl;
-            std::cout << "Total Price: " << categorySumPrice[i][1] << std::endl;
+            std::cout << "Category: '" << categorySumPrice[i][0] << "' with total Price: '" << categorySumPrice[i][1] << "'" << std::endl;
         }
     }
 
