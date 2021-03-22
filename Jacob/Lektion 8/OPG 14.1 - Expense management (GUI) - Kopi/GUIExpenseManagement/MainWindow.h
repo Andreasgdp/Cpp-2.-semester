@@ -16,6 +16,7 @@ public:
     ~MainWindow();
 
 private slots:
+
     void on_btnShow_clicked();
 
 private:

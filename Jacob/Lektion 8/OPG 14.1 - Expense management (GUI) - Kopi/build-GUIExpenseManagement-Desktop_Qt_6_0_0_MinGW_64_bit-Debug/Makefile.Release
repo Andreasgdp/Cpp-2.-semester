@@ -586,7 +586,8 @@ release/MainWindow.o: ../GUIExpenseManagement/MainWindow.cpp ../GUIExpenseManage
 		C:/Qt/6.0.0/mingw81_64/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/6.0.0/mingw81_64/include/QtWidgets/QStatusBar \
 		C:/Qt/6.0.0/mingw81_64/include/QtWidgets/qstatusbar.h \
-		C:/Qt/6.0.0/mingw81_64/include/QtWidgets/QTableView \
+		C:/Qt/6.0.0/mingw81_64/include/QtWidgets/QTableWidget \
+		C:/Qt/6.0.0/mingw81_64/include/QtWidgets/qtablewidget.h \
 		C:/Qt/6.0.0/mingw81_64/include/QtWidgets/qtableview.h \
 		C:/Qt/6.0.0/mingw81_64/include/QtWidgets/QVBoxLayout \
 		C:/Qt/6.0.0/mingw81_64/include/QtWidgets/QWidget \
@@ -595,9 +596,7 @@ release/MainWindow.o: ../GUIExpenseManagement/MainWindow.cpp ../GUIExpenseManage
 		C:/Qt/6.0.0/mingw81_64/include/QtSql/qtsqlglobal.h \
 		C:/Qt/6.0.0/mingw81_64/include/QtSql/qtsql-config.h \
 		C:/Qt/6.0.0/mingw81_64/include/QtSql/qsqldatabase.h \
-		C:/Qt/6.0.0/mingw81_64/include/QtSql/qsqlquerymodel.h \
-		C:/Qt/6.0.0/mingw81_64/include/QtSql/QSqlRecord \
-		C:/Qt/6.0.0/mingw81_64/include/QtSql/qsqlrecord.h
+		C:/Qt/6.0.0/mingw81_64/include/QtSql/qsqlquerymodel.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\MainWindow.o ..\GUIExpenseManagement\MainWindow.cpp
 
 release/moc_MainWindow.o: release/moc_MainWindow.cpp 
