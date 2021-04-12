@@ -41,7 +41,7 @@ Vector& Vector::operator=(const Vector& rhs) {
     return *this;
 }
 
-bool Vector::operator==(const Vector& rhs){
+bool Vector::operator==(const Vector& rhs){     // Check for size
     for (int i = 0; i < mSize; ++i) {
         if (mElems[i] != rhs.mElems[i])
             return false;
@@ -49,15 +49,13 @@ bool Vector::operator==(const Vector& rhs){
     return true;
 }
 
-
-bool Vector::operator!=(const Vector& rhs) {
+bool Vector::operator!=(const Vector& rhs) {     // Check for size
     for (int i = 0; i < mSize; ++i) {
         if (mElems[i] != rhs.mElems[i])
             return true;
     }
     return false;
 }
-
 
 Vector Vector::operator+(const Vector& rhs) {
     Vector v(mSize);
@@ -77,14 +75,14 @@ Vector Vector::operator-(const Vector& rhs) {
 
 Vector& Vector::operator+=(const Vector& rhs) {
     for (int i = 0; i < mSize; ++i) {
-        mElems[i] += rhs.mElems[i];
+        mElems[i] = mElems[i] + rhs.mElems[i];
     }
     return *this;
 }
 
 Vector& Vector::operator-=(const Vector& rhs) {
     for (int i = 0; i < mSize; ++i) {
-        mElems[i] -= rhs.mElems[i];
+        mElems[i] = mElems[i] - rhs.mElems[i];
     }
     return *this;
 }
