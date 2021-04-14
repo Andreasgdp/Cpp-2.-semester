@@ -12,9 +12,6 @@ int main()
         b[0] = 1;
         b[1] = 2;
 
-        cin >> b;
-        cout << b;
-
         Vector a;
         a = b;
     }

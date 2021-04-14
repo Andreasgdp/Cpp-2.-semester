@@ -1,7 +1,7 @@
 #include "Vector.h"
 
 Vector::Vector(int n) {
-    if (n > 0) {
+    if (n >= 0) {
         this->_size = n;
         this->_elems = new double[n];
     } else {
@@ -10,18 +10,30 @@ Vector::Vector(int n) {
 }
 
 Vector::Vector(const Vector &v) {
+    if(v._size > 0) {
+        this->_elems = new double[v._size];
+    }
+
     this->_size = v._size;
-    this->_elems = new double[this->_size];
-    for (int i = 0; i < this->_size; i++)
-	{
+
+    for(int i = 0; i < this->_size; ++i) {
         this->_elems[i] = v._elems[i];
-	}
+    }
 	
 }
 
 Vector& Vector::operator=(const Vector &rhs) {
+    if(this->_size != rhs._size) {
+        delete[] this->_elems;
+        _elems = new double[rhs._size];
+    }
+
     this->_size = rhs._size;
-    this->_elems = rhs._elems;
+
+    for(int i = 0; i < this->_size; ++i) {
+        this->_elems[i] = rhs._elems[i];
+    }
+
     return *this;
 }
 
