@@ -9,7 +9,7 @@ public:
     Circle();
     Circle(double radius);
 
-    double area();
+    double area() override;
 
 private:
     double _radius;
