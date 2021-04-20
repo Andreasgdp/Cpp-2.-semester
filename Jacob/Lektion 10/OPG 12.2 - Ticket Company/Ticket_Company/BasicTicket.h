@@ -18,7 +18,7 @@ public:
     int getTicketno() const { return _ticketno; };
     std::string getCity() const { return _city; };
     std::string getOpera() const { return _opera; };
-    double getPrice() const { return _price; };
+    virtual double getPrice() const { return _price; };
 
 
 private:

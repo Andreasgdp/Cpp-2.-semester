@@ -9,7 +9,7 @@ public:
     Triangle();
     Triangle(double height, double width);
 
-    double area();
+    double area() override;
 
 private:
     double _height, _width;
