@@ -80,17 +80,6 @@ int main()
     }
     strStream.close();
 
-
-    // for (const std::string& elem : dkDictionary) {
-    //     std::cout << elem << std::endl;
-    // }
-    // for (const std::string& elem : enDictionary) {
-    //     std::cout << elem << std::endl;
-    // }
-    // for (const std::string& elem : deDictionary) {
-    //     std::cout << elem << std::endl;
-    // }
-
     string input;
     cout << "Enter string to find in dictionary: ";
     std::cin >> input;
