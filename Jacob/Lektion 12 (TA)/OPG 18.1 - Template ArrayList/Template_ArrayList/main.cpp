@@ -1,7 +1,6 @@
 #include <iostream>
 #include "ArrayList.h"
 
-
 int main () {
     ArrayList<double> array;
 
